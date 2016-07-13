@@ -1,18 +1,16 @@
 $(document).ready(function() {
-	// Este código corre después de que `document` fue cargado(loaded) 
-	// completamente. 
-	// Esto garantiza que si amarramos(bind) una función a un elemento 
-	// de HTML este exista ya en la página. 
-    //create three initial fields
+
+  //create three initial fields
   var info = {};
   var $pregunta = 0;
+  var $survey_name = "survey_name";
   var startingNo = 0;
   var $node = "";
   for(varCount=0;varCount<=startingNo;varCount++){
       var displayCount = varCount+1;
-      var counter = varCount
+      var counter = varCount;
       $node += '<p><label for="var'+displayCount+'">Question '+displayCount+': </label><input id="question_'+counter+'"type="text" name="var'+displayCount+'" id="var'+displayCount+'"><span class="create_question"> Create Question</span></p>';
-  }
+  };
   //add them to the DOM
   $('#form_question').prepend($node);
   //CREATE QUESTION
@@ -51,15 +49,17 @@ $(document).ready(function() {
 
   $("#final_submit").on('click', function(e){
     e.preventDefault();
-    console.log("eStoy en el post");
+    console.log("**************** INSIDE FINAL SUBMIT CLICK ***********");
+    var name = $('#survey_name').val();
+    console.log(name);
+    info[$survey_name] = name;
+    console.log(info);
     var obj = JSON.stringify(info);
-    var inf = "inf=" + obj
+    var inf = "inf=" + obj;
     console.log(obj);
     $.post('/create', inf, function(data){
-      console.log(data);
+      window.location.replace('/surveys');
     });
 
   });
 });
-
-// Guardar todos los inputs en un arreglo global de javascript con $, Crear un json - que es como un hash - en el Finish Survey, mandarlo al post y separarlo en params individuales y asignarlos a los atributos de las instancias.

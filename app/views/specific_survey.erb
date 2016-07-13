@@ -1,0 +1,28 @@
+<div class="container">
+
+  <nav>
+    <div>
+    <div id="barra">
+    <ul>
+      <li id="welcome_name" style="float:left">Welcome <%user = User.find(session[:id])%><%=user.name%></li>
+      <li><a href="/survey/new">Create a survey!</a></li>
+      <li><a href="/logout">Log out</a></li>
+    </ul>
+    <br clear="all">
+    </div>
+    </div>  
+  </nav>
+
+</div>
+
+<div id="survey_container">
+  <h3>Survey<%=@survey.name%></h3>
+  <%@questions.each do |question|%>
+    <p><%=question.description%></p>
+    <%@options.each do |option|%>
+      <%if option.question_id == question.id%>
+        <p><%=option.description%></p>
+      <%end%>
+    <%end%>
+  <%end%>
+</div>
