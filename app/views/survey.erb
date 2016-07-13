@@ -1,0 +1,32 @@
+<div class="container">
+  <nav>
+    <div>
+    <div id="barra">
+    <ul>
+      <li id="welcome_name">Welcome <%user = User.find(session[:id])%><%=user.name%></li>
+      <li><a href="/ask">Create a survey!</a></li>
+      <li><a href="/logout">Log out</a></li>
+    </ul>
+    <br clear="all">
+    </div>
+    </div>  
+  </nav>
+
+  <div>
+    <div id="content_container">
+      <form id="survey_container" action="/create" method="post">
+        <input type="text" name="survey_name" placeholder="Survey name."><br><br>
+        <textarea type="text" name="survey_description" placeholder="Survey description."></textarea><br><br>
+        <input type="submit" value="Create Survey"><br><br>
+      </form>
+    </div>
+  </div>
+
+  <div id="survey_container">  
+    <form id="form_question" method="post">
+      <p><span id="done_question">Done with Question</span></p>
+      <p><input id="final_submit" type="submit" value="Finish Survey"></p>   
+    </form>
+  </div>
+
+</div>

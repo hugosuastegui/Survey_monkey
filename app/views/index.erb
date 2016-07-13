@@ -1,4 +1,26 @@
-  <h1>Bienvenido a Sinatra!</h1>
-  <p>Este es un esqueleto de sinatra que armamos para ti</p>
-
-  
+ <img id="sm_logo" src="logo_stacked.png">
+ <% if @bulean %>
+  <p style="color:green, text-align: center">Usuario registrado</p>
+  <% @bulean = false %>
+  <%end %>
+   <% if @bulean2 %>
+  <p style="color:red">Logout Efectuado</p>
+  <% @bulean2 = false %>
+  <%end %>
+  <%= @error_message %>
+ <div id="login_credentials">
+   <b style="color:black" >Inicia Sesión o Regístrate para continuar...</b><br><br>
+   <form action="/register" method="post">
+    <b style="color:black text-shadow: 2px 2px black">Registro.</b><br><br>
+    <input type="text" name="name" placeholder="Nombre"><br>
+    <input type="text" name="email" placeholder="Email"><br>
+    <input type="password" name="password" placeholder="Contraseña"><br><br>
+    <input type="submit" name="register" value="Register"><br><br>
+  </form>
+  <form action="/login" method="post">  
+    <b style="color:black">Inicia Sesión.</b><br><br>
+    <input type="text" name="email" placeholder="Email"><br>
+    <input type="password" name="password" placeholder="Contraseña"><br><br>
+    <input type="submit" name="login" value="Log in"><br><br>
+  </form>
+ </div>
